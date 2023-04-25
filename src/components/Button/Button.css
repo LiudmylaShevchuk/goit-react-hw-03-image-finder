@@ -1,0 +1,15 @@
+.Button-load {
+    display: block;
+    margin: 20px auto;
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: solid;
+    background-color: rgb(88, 138, 45);
+    color: rgb(196, 202, 190);
+    cursor: pointer;
+}
+
+.Button-load:hover {
+    background-color: rgb(48, 81, 42);
+}

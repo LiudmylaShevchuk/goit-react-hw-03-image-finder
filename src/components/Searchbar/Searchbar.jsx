@@ -1,50 +1,49 @@
-import React, { Component} from 'react';
 import './Searchbar.css';
-import { ImSearch } from 'react-icons/im';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { ImSearch } from 'react-icons/im';
+
 class Searchbar extends Component {
-    state = {inputData: '',};
+  state = {
+    inputData: '',
+  };
+  onChangeInput = e => {
+    this.setState({ inputData: e.currentTarget.value.toLowerCase() });
+  };
 
-
-onChangeInput = e => { 
-    this.setState({ inputData: e.currenrTarget.value.toLowerCase() });
-};
-
-handleSubmit = e => { 
+  handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit({ inputData: '' });
-};
+    this.props.onSubmit(this.state.inputData);
+    this.setState({ inputData: '' });
+  };
 
-render() { 
+  render() {
     const { inputData } = this.state.inputData;
-
     return (
-        <header className="Searchbar">
-            <form className="SearchForm" onSubmit={this.handleSubmit}>
-                <button type="submit" className="SearchForm-button">
-                    <ImSearch size={25} />
-                </button>
+      <header className="Searchbar">
+        <form className="SearchForm" onSubmit={this.handleSubmit}>
+          <button type="submit" className="SearchForm-button">
+            <ImSearch size={25} />
+          </button>
 
-                <input
-                    className="SearchForm-input"
-                    name="inputData"
-                    value={inputData}
-                    onChange={this.onChangeInput}
-                    type="text"
-                    autocomplete="off"
-                    autofocus
-                    placeholder="Search images and photos"
-                />
-            </form>
-        </header>
+          <input
+            className="SearchForm-input"
+            name="inputData"
+            value={inputData}
+            onChange={this.onChangeInput}
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search images and photos"
+          />
+        </form>
+      </header>
     );
-}
+  }
 }
 
 export default Searchbar;
-
 Searchbar.propType = {
-    onSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
-
